@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://sunxiaoway.com">
-  <title>Archives | 孙小微的博客</title>
+  <title>underscore.js源码学习 | 孙小微的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="孙小微的博客">
-<meta property="og:url" content="http://sunxiaoway.com/archives/index.html">
+  <meta name="description" content="underscore.js 源码学习（1）最近一直想看个源码，提升下技术能力，看了两天jquery，jquery真的是大神级别的框架，逻辑精妙，但是实在太长太复杂，不适合作为第一个源码来学习。于是，上了知乎看了看，好多人推荐underscore，恩，之前没怎么用过，因为一般都用jquery，或者自己写，或者有组内大神写的类库，先看了下api，大概了解了一下，觉得还不错，于是乎开始了源码的学习之路。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="underscore.js源码学习">
+<meta property="og:url" content="http://sunxiaoway.com/2017/03/13/underscore-js源码学习/index.html">
 <meta property="og:site_name" content="孙小微的博客">
+<meta property="og:description" content="underscore.js 源码学习（1）最近一直想看个源码，提升下技术能力，看了两天jquery，jquery真的是大神级别的框架，逻辑精妙，但是实在太长太复杂，不适合作为第一个源码来学习。于是，上了知乎看了看，好多人推荐underscore，恩，之前没怎么用过，因为一般都用jquery，或者自己写，或者有组内大神写的类库，先看了下api，大概了解了一下，觉得还不错，于是乎开始了源码的学习之路。">
+<meta property="og:updated_time" content="2017-03-13T12:55:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="孙小微的博客">
+<meta name="twitter:title" content="underscore.js源码学习">
+<meta name="twitter:description" content="underscore.js 源码学习（1）最近一直想看个源码，提升下技术能力，看了两天jquery，jquery真的是大神级别的框架，逻辑精妙，但是实在太长太复杂，不适合作为第一个源码来学习。于是，上了知乎看了看，好多人推荐underscore，恩，之前没怎么用过，因为一般都用jquery，或者自己写，或者有组内大神写的类库，先看了下api，大概了解了一下，觉得还不错，于是乎开始了源码的学习之路。">
   
     <link rel="alternative" href="/atom.xml" title="孙小微的博客" type="application/atom+xml">
   
@@ -145,36 +149,69 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="hexo/source/_posts/-underscore-js源码学习" class="article article-type-hexo/source/_posts/ " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-hexo/source/_posts/">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/13/underscore-js源码学习/" class="archive-article-date">
-  	<time datetime="2017-03-13T12:29:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-13</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/13/underscore-js源码学习/">underscore.js源码学习</a>
+    <h1 class="article-title" itemprop="name">
+      underscore.js源码学习
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/03/13/underscore-js源码学习/" class="archive-article-date">
+  	<time datetime="2017-03-13T12:29:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="underscore-js-源码学习（1）"><a href="#underscore-js-源码学习（1）" class="headerlink" title="underscore.js 源码学习（1）"></a>underscore.js 源码学习（1）</h2><p>最近一直想看个源码，提升下技术能力，看了两天jquery，jquery真的是大神级别的框架，逻辑精妙，但是实在太长太复杂，不适合作为第一个源码来学习。<br>于是，上了知乎看了看，好多人推荐underscore，恩，之前没怎么用过，因为一般都用jquery，或者自己写，或者有组内大神写的类库，先看了下api，大概了解了一下，<br>觉得还不错，于是乎开始了源码的学习之路。</p>
+<p>整体架构之类的也不用讲了需要个人体会，我讲讲他每个函数的封装，以及我看出来的问题，代码我都自己敲了一遍</p>
+<h3 id="random"><a href="#random" class="headerlink" title="random"></a>random</h3><p>获取某两个整数之间的一个数(问题 必须是整数才能输出整数,并且传值为3到5时概率不一样)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">config.random = <span class="keyword">function</span> (min, max) &#123;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (max == null) &#123;</div><div class="line">        max = min;</div><div class="line">        min = 0;</div><div class="line">    &#125;</div><div class="line">    &lt;!-- console.log(min + Math.floor(Math.random()*(max - min + 1))); --&gt;</div><div class="line">    <span class="built_in">return</span> min + Math.floor(Math.random()*(max - min + 1));</div><div class="line">&#125;;</div><div class="line">this.random(5);</div><div class="line">this.random(3, 5);</div><div class="line">this.random(2.3, 3);api没说必须传整数，所以这样是否就有问题了呢</div></pre></td></tr></table></figure>
+<h3 id="now"><a href="#now" class="headerlink" title="now"></a>now</h3><p>生成时间戳（问题是源码中似乎没调用Date.now(）只是写了下Date.now,是不是一个问题呢)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">config.now = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    &lt;!-- debugger --&gt;</div><div class="line">    <span class="built_in">return</span> Date.now() || new Date().getTime();</div><div class="line">&#125;;</div><div class="line">this.now();</div></pre></td></tr></table></figure>
+<h3 id="uniqueId"><a href="#uniqueId" class="headerlink" title="uniqueId"></a>uniqueId</h3><p>生成唯一的dom 整数id</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">config.uniqueId = <span class="keyword">function</span>(prefix) &#123;</div><div class="line">    &lt;!-- debugger --&gt;</div><div class="line">    var idCounter = 0;</div><div class="line">    var id = ++idCounter + <span class="string">''</span>;</div><div class="line">    <span class="built_in">return</span> prefix ? prefix + id : id;</div><div class="line">&#125;;</div><div class="line">this.uniqueId(<span class="string">'aa'</span>);</div><div class="line">this.uniqueId();</div></pre></td></tr></table></figure>
+<h3 id="noConflict"><a href="#noConflict" class="headerlink" title="noConflict"></a>noConflict</h3><p>防止全局变量冲突的解决方案</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var root = typeof self == <span class="string">'object'</span> &amp;&amp; self.self === self &amp;&amp; self ||</div><div class="line">        typeof global == <span class="string">'object'</span> &amp;&amp; global.global === global &amp;&amp; global ||</div><div class="line">        this ||</div><div class="line">        &#123;&#125;;</div><div class="line">var previousUnderscore = root._;</div><div class="line">config.noConflict = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    &lt;!-- debugger --&gt;</div><div class="line">    root._ = previousUnderscore;</div><div class="line">    <span class="built_in">return</span> this;</div><div class="line">&#125;;</div><div class="line">var aa = this.noConflict();</div></pre></td></tr></table></figure>
+<h3 id="identity"><a href="#identity" class="headerlink" title="identity"></a>identity</h3><p>返回自身值</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">config.identity = <span class="keyword">function</span>(value)&#123;</div><div class="line">    <span class="built_in">return</span> value;</div><div class="line">&#125;;</div><div class="line">this.identity(11);</div></pre></td></tr></table></figure>
+<h3 id="constant"><a href="#constant" class="headerlink" title="constant"></a>constant</h3><p>返回一个能返回参数本身的函数<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">config.identity = <span class="keyword">function</span>(value)&#123;</div><div class="line">    <span class="built_in">return</span> value;</div><div class="line">&#125;;</div><div class="line">this.constant(11);</div></pre></td></tr></table></figure></p>
+<p>简单的api实现函数分析到此为止，明天继续</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -186,19 +223,78 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://sunxiaoway.com/2017/03/13/underscore-js源码学习/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-  
-    </div></section>
+
   
 
-    
+
+
+
+
+  
+    <div class="duoshuo"></div>
+  
+
+
 
 
           </div>
@@ -221,8 +317,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

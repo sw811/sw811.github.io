@@ -82,8 +82,6 @@
 		        
 					<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/sun-wei-37-70/activities" title="zhihu"><i class="icon-zhihu"></i></a>
 		        
-					<a class="mail" target="_blank" href="/1248812520@qq.com" title="mail"><i class="icon-mail"></i></a>
-		        
 			</div>
 		</nav>
 	</header>		
@@ -123,8 +121,6 @@
 			        
 						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/sun-wei-37-70/activities" title="zhihu"><i class="icon-zhihu"></i></a>
 			        
-						<a class="mail" target="_blank" href="/1248812520@qq.com" title="mail"><i class="icon-mail"></i></a>
-			        
 				</div>
 			</nav>
 
@@ -151,85 +147,40 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-regard" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="hexo/source/_posts/-underscore-js源码学习" class="article article-type-hexo/source/_posts/  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/08/regard/">regard</a>
+      <a class="article-title" href="/2017/03/13/underscore-js源码学习/">underscore.js源码学习</a>
     </h1>
   
 
         
-        <a href="/2017/03/08/regard/" class="archive-article-date">
-  	<time datetime="2017-03-08T06:19:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-08</time>
+        <a href="/2017/03/13/underscore-js源码学习/" class="archive-article-date">
+  	<time datetime="2017-03-13T12:29:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/08/regard/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/08/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/08/hello-world/" class="archive-article-date">
-  	<time datetime="2017-03-08T03:30:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h2 id="underscore-js-源码学习（1）"><a href="#underscore-js-源码学习（1）" class="headerlink" title="underscore.js 源码学习（1）"></a>underscore.js 源码学习（1）</h2><p>最近一直想看个源码，提升下技术能力，看了两天jquery，jquery真的是大神级别的框架，逻辑精妙，但是实在太长太复杂，不适合作为第一个源码来学习。<br>于是，上了知乎看了看，好多人推荐underscore，恩，之前没怎么用过，因为一般都用jquery，或者自己写，或者有组内大神写的类库，先看了下api，大概了解了一下，<br>觉得还不错，于是乎开始了源码的学习之路。</p>
+<p>整体架构之类的也不用讲了需要个人体会，我讲讲他每个函数的封装，以及我看出来的问题，代码我都自己敲了一遍</p>
+<h3 id="random"><a href="#random" class="headerlink" title="random"></a>random</h3><p>获取某两个整数之间的一个数(问题 必须是整数才能输出整数,并且传值为3到5时概率不一样)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">config.random = <span class="keyword">function</span> (min, max) &#123;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (max == null) &#123;</div><div class="line">        max = min;</div><div class="line">        min = 0;</div><div class="line">    &#125;</div><div class="line">    &lt;!-- console.log(min + Math.floor(Math.random()*(max - min + 1))); --&gt;</div><div class="line">    <span class="built_in">return</span> min + Math.floor(Math.random()*(max - min + 1));</div><div class="line">&#125;;</div><div class="line">this.random(5);</div><div class="line">this.random(3, 5);</div><div class="line">this.random(2.3, 3);api没说必须传整数，所以这样是否就有问题了呢</div></pre></td></tr></table></figure>
+<h3 id="now"><a href="#now" class="headerlink" title="now"></a>now</h3><p>生成时间戳（问题是源码中似乎没调用Date.now(）只是写了下Date.now,是不是一个问题呢)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">config.now = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    &lt;!-- debugger --&gt;</div><div class="line">    <span class="built_in">return</span> Date.now() || new Date().getTime();</div><div class="line">&#125;;</div><div class="line">this.now();</div></pre></td></tr></table></figure>
+<h3 id="uniqueId"><a href="#uniqueId" class="headerlink" title="uniqueId"></a>uniqueId</h3><p>生成唯一的dom 整数id</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">config.uniqueId = <span class="keyword">function</span>(prefix) &#123;</div><div class="line">    &lt;!-- debugger --&gt;</div><div class="line">    var idCounter = 0;</div><div class="line">    var id = ++idCounter + <span class="string">''</span>;</div><div class="line">    <span class="built_in">return</span> prefix ? prefix + id : id;</div><div class="line">&#125;;</div><div class="line">this.uniqueId(<span class="string">'aa'</span>);</div><div class="line">this.uniqueId();</div></pre></td></tr></table></figure>
+<h3 id="noConflict"><a href="#noConflict" class="headerlink" title="noConflict"></a>noConflict</h3><p>防止全局变量冲突的解决方案</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var root = typeof self == <span class="string">'object'</span> &amp;&amp; self.self === self &amp;&amp; self ||</div><div class="line">        typeof global == <span class="string">'object'</span> &amp;&amp; global.global === global &amp;&amp; global ||</div><div class="line">        this ||</div><div class="line">        &#123;&#125;;</div><div class="line">var previousUnderscore = root._;</div><div class="line">config.noConflict = <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">    &lt;!-- debugger --&gt;</div><div class="line">    root._ = previousUnderscore;</div><div class="line">    <span class="built_in">return</span> this;</div><div class="line">&#125;;</div><div class="line">var aa = this.noConflict();</div></pre></td></tr></table></figure>
+<h3 id="identity"><a href="#identity" class="headerlink" title="identity"></a>identity</h3><p>返回自身值</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">config.identity = <span class="keyword">function</span>(value)&#123;</div><div class="line">    <span class="built_in">return</span> value;</div><div class="line">&#125;;</div><div class="line">this.identity(11);</div></pre></td></tr></table></figure>
+<h3 id="constant"><a href="#constant" class="headerlink" title="constant"></a>constant</h3><p>返回一个能返回参数本身的函数<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">config.identity = <span class="keyword">function</span>(value)&#123;</div><div class="line">    <span class="built_in">return</span> value;</div><div class="line">&#125;;</div><div class="line">this.constant(11);</div></pre></td></tr></table></figure></p>
+<p>简单的api实现函数分析到此为止，明天继续</p>
 
       
 
@@ -238,11 +189,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">技术博客</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/08/hello-world/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/03/13/underscore-js源码学习/">展开全文 >></a>
         </p>
       
 
@@ -347,6 +309,10 @@
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">技术博客</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
